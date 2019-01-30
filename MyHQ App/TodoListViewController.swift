@@ -17,10 +17,12 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-      
+        if let items = defaults.array(forKey: "ToDoLists") as? [String]{
+            itemsArray = items
+        }
     }
     
-    //MARK Tableview Datasource Methods
+    //MARK - Tableview Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         return itemsArray.count
@@ -34,7 +36,7 @@ class TodoListViewController: UITableViewController {
     }
     
     
-    //MARK TableView Delegate Methods
+    //MARK - TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          print(indexPath.row)
         
@@ -47,11 +49,10 @@ class TodoListViewController: UITableViewController {
     }
     
     
-    //MARK Add new items
+    //MARK - Add new items
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        print("add button pressed")
         
-        
+        //This is a textfield in the UIAlertController
         var textField = UITextField()
         
         let alert = UIAlertController(title: "add itemt to To-Do List", message: "", preferredStyle: .alert)
