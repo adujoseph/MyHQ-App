@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TodoData {
+class TodoData: Encodable, Decodable {
     var title: String = ""
     var isDone: Bool = false
 }
